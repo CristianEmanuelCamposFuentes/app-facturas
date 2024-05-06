@@ -26,5 +26,5 @@ bin/
 .vscode/
 
 ### Mac OS ###
-.DS_Store
-/.idea/sonarlint/
+.DS_Store!/.idea/
+.idea
