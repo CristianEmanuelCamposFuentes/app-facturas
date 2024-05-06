@@ -72,17 +72,20 @@ public class Factura {
 
         sb.append("Fecha Emision: ")
                 .append(df.format(this.fecha))
-                .append("\n");
+                .append("\n")
+                .append("\n#\tNombre\t$\tCant.\tTotal\n");
 
         for (ItemFactura item : this.items) {
             if (item == null) continue;
-            sb.append(item.getProducto().getCodigo())
-                    .append(item.getCantidad() + "\n")
-                    .append(item.getProducto().getNombre() + "\n")
-                    .append(item.calcularImporte() + "\n")
+            sb.append(item)
                     .append("\n");
 
         }
         return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        return generarDetalle();
     }
 }
