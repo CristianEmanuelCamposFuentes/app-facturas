@@ -2,6 +2,7 @@ package org.taba.appfacturas;
 
 import org.taba.appfacturas.modelo.Cliente;
 import org.taba.appfacturas.modelo.Factura;
+import org.taba.appfacturas.modelo.ItemFactura;
 import org.taba.appfacturas.modelo.Producto;
 
 import java.util.Scanner;
@@ -28,21 +29,23 @@ public class EjemploFactura {
         for (int i = 0; i < 5; i++) {
             // Crear el item
             producto = new Producto();
-            System.out.println("Ingrese producto no " + producto.getCodigo() + ": ");
-            System.out.println("Introduce el nombre del producto: ");
-            nombre = s.nextLine();
-            System.out.println("Introduce el precio del producto: ");
-            precio = Float.parseFloat(s.nextLine());
-            System.out.println("Introduce la cantidad del producto: ");
-            cantidad = Integer.parseInt(s.nextLine());
-            // Crear el producto
-            producto = new Producto();
+            System.out.print("Ingrese producto no " + producto.getCodigo() + ": ");
+            nombre = s.next();
             producto.setNombre(nombre);
+
+            System.out.print("Introduce el precio del producto: ");
+            precio = s.nextFloat();
             producto.setPrecio(precio);
+
+            System.out.print("Introduce la cantidad del producto: ");
+            cantidad = s.nextInt();
+
             // Crear el Item
+            ItemFactura item = new ItemFactura(cantidad, producto);
+            factura.addItemFactura(item);
+
+            System.out.println();
         }
-
-
-
+        System.out.println(factura.generarDetalle());
     }
 }

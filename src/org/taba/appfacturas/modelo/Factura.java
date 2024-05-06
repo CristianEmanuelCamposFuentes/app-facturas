@@ -34,8 +34,8 @@ public class Factura {
     }
 
     public void addItemFactura(ItemFactura item) {
-        if(indiceItems < MAX_ITEMS) {
-        this.items[indiceItems++] = item;
+        if (indiceItems < MAX_ITEMS) {
+            this.items[indiceItems++] = item;
         }
     }
 
@@ -53,9 +53,9 @@ public class Factura {
 
     public float calcularTotal() {
         float total = 0.0f;
-        for(ItemFactura item: items) {
+        for (ItemFactura item : items) {
             // Validar que no sea null
-            if(!(item instanceof ItemFactura) ) continue;
+            if (!(item instanceof ItemFactura)) continue;
             total += item.calcularImporte();
         }
         return total;
@@ -70,14 +70,17 @@ public class Factura {
         // Formatear la fecha
         SimpleDateFormat df = new SimpleDateFormat("dd 'de' MMMM, yyyy");
 
-        sb.append("Fecha: " + df.format(this.fecha) + "\n");
+        sb.append("Fecha Emision: ")
+                .append(df.format(this.fecha))
+                .append("\n");
 
-        for(ItemFactura item: this.items) {
-            if(item == null) continue;
-            sb.append(item.getCantidad() + "\n");
-            sb.append(item.getProducto().getNombre() + "\n");
-            sb.append(item.calcularImporte() + "\n");
-            sb.append("\n");
+        for (ItemFactura item : this.items) {
+            if (item == null) continue;
+            sb.append(item.getProducto().getCodigo())
+                    .append(item.getCantidad() + "\n")
+                    .append(item.getProducto().getNombre() + "\n")
+                    .append(item.calcularImporte() + "\n")
+                    .append("\n");
 
         }
         return sb.toString();
