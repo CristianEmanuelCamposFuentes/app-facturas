@@ -1,24 +1,23 @@
-# JavaFX-Point-of-Sales
-Point of Sales with inventory management system 
+# Inventory Management System
 
-The MIT License (MIT)
+## Descripción
 
-Copyright (c) 2024 Rafsanjani
+Este proyecto es una aplicación de gestión de inventarios desarrollada en Java utilizando JavaFX para la interfaz de usuario y Hibernate para la persistencia de datos. La aplicación permite gestionar productos, empleados, facturas, proveedores, compras y ventas en un entorno de depósito. Está diseñada para ser utilizada en un entorno de trabajo, donde los empleados pueden realizar movimientos de stock y agregar nuevos productos, mientras que el administrador tiene privilegios avanzados para evitar la pérdida de información importante.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+## Requisitos
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+- Java 8 o superior
+- Maven 3.1 o superior
+- MySQL 5.7
+- Git
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+## Configuración
+
+### 1. Clonar el Repositorio
+
+Clona el repositorio en tu máquina local:
+
+```sh
+git clone https://github.com/tu-usuario/inventory-management.git
+cd inventory-management
+
