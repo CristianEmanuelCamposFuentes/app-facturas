@@ -1,0 +1,25 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">${hibernate.dialect}</property>
+        <property name="hibernate.connection.driver_class">${hibernate.connection.driver_class}</property>
+        <property name="hibernate.connection.url">${hibernate.connection.url}</property>
+        <property name="hibernate.connection.username">${hibernate.connection.username}</property>
+        <property name="hibernate.connection.password">${hibernate.connection.password}</property>
+        <property name="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</property>
+        <property name="hibernate.show_sql">${hibernate.show_sql}</property>
+        <property name="hibernate.format_sql">${hibernate.format_sql}</property>
+        <property name="hibernate.current_session_context_class">${hibernate.current_session_context_class}</property>
+
+        <!-- Entity mappings -->
+        <mapping class="com.taba.inventory.entity.Category"/>
+        <mapping class="com.taba.inventory.entity.Employee"/>
+        <mapping class="com.taba.inventory.entity.Invoice"/>
+        <mapping class="com.taba.inventory.entity.Product"/>
+        <mapping class="com.taba.inventory.entity.Purchase"/>
+        <mapping class="com.taba.inventory.entity.Sale"/>
+        <mapping class="com.taba.inventory.entity.Supplier"/>
+    </session-factory>
+</hibernate-configuration>

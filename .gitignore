@@ -93,4 +93,4 @@ gen
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 
-/src/main/resources/database.properties
+src/main/resources/database.properties
