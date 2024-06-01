@@ -3,15 +3,17 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.dialect">${hibernate.dialect}</property>
-        <property name="hibernate.connection.driver_class">${hibernate.connection.driver_class}</property>
-        <property name="hibernate.connection.url">${hibernate.connection.url}</property>
-        <property name="hibernate.connection.username">${hibernate.connection.username}</property>
-        <property name="hibernate.connection.password">${hibernate.connection.password}</property>
-        <property name="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</property>
-        <property name="hibernate.show_sql">${hibernate.show_sql}</property>
-        <property name="hibernate.format_sql">${hibernate.format_sql}</property>
-        <property name="hibernate.current_session_context_class">${hibernate.current_session_context_class}</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/inventory?useSSL=false</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">mpeinsumos</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <!-- Optional: These properties can be uncommented if needed -->
+         <property name="hibernate.hbm2ddl.auto">update</property>
+         <property name="hibernate.show_sql">true</property>
+         <property name="hibernate.format_sql">true</property>
 
         <!-- Entity mappings -->
         <mapping class="com.taba.inventory.entity.Category"/>

@@ -13,14 +13,11 @@ public class HibernateUtil {
 
     public static boolean setSessionFactory() {
         try {
-            Properties properties = new Properties();
-            properties.load(HibernateUtil.class.getResourceAsStream("/database.properties"));
 
             sessionFactory = new Configuration()
-                    .addProperties(properties)
                     .configure()
                     .buildSessionFactory();
-        } catch (HibernateException | IOException ex) {
+        } catch (HibernateException ex) {
             return false;
             
         }

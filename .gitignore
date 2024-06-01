@@ -94,3 +94,4 @@ gen
 
 
 src/main/resources/database.properties
+/target/
