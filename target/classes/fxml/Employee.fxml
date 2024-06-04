@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="760.0" stylesheets="@../styles/admin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taba.inventory.controller.employee.EmployeeController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="760.0" stylesheets="@../styles/admin.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taba.inventory.controller.employee.EmployeeController">
    <children>
       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="760.0" styleClass="hbox-top-background">
          <children>
@@ -31,7 +29,7 @@
                   </Pane>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0" HBox.hgrow="NEVER">
                      <children>
-                        <TextField fx:id="searchField" layoutX="15.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="170.0" promptText="Search" styleClass="search-field" />
+                        <TextField fx:id="searchField" layoutX="15.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="170.0" promptText="Buscar" styleClass="search-field" />
                         <Separator layoutX="15.0" layoutY="51.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="170.0" valignment="BOTTOM" />
                      </children>
                   </Pane>
@@ -55,7 +53,7 @@
                                     <Insets />
                                  </HBox.margin>
                                  <children>
-                                    <Label layoutX="14.0" layoutY="12.0" styleClass="hbox-title" text="Staff" />
+                                    <Label layoutX="14.0" layoutY="12.0" styleClass="hbox-title" text="Empleados" />
                                  </children>
                               </Pane>
                            </children>
@@ -63,12 +61,12 @@
                         <TableView fx:id="employeeTable" minWidth="-Infinity" prefHeight="300.0" prefWidth="740.0" VBox.vgrow="ALWAYS">
                           <columns>
                             <TableColumn fx:id="idColumn" prefWidth="75.0" text="Id" />
-                            <TableColumn fx:id="firstnameColumn" prefWidth="75.0" text="First Name" />
-                              <TableColumn fx:id="lastnameColumn" prefWidth="75.0" text="Last Name" />
+                            <TableColumn fx:id="firstnameColumn" prefWidth="75.0" text="Nombre" />
+                              <TableColumn fx:id="lastnameColumn" prefWidth="75.0" text="Apelllido" />
                               <TableColumn fx:id="usernameColumn" prefWidth="75.0" text="Username" />
                               <TableColumn fx:id="passwordColumn" prefWidth="75.0" text="Password" />
-                              <TableColumn fx:id="phoneColumn" prefWidth="75.0" text="Phone" />
-                              <TableColumn fx:id="addressColumn" prefWidth="75.0" text="Address" />
+                              <TableColumn fx:id="phoneColumn" prefWidth="75.0" text="Telefono" />
+                              <TableColumn fx:id="addressColumn" prefWidth="75.0" text="Rol" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

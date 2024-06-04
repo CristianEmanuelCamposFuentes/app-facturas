@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
-<?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="760.0" stylesheets="@../styles/admin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taba.inventory.controller.admin.AdminController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="760.0" stylesheets="@../styles/admin.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taba.inventory.controller.admin.AdminController">
    <children>
       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="760.0" styleClass="hbox-top-background">
          <children>
@@ -49,7 +48,7 @@
                                     <Insets />
                                  </HBox.margin>
                                  <children>
-                                    <Label layoutX="14.0" layoutY="12.0" styleClass="hbox-title" text="Admin" />
+                                    <Label layoutX="14.0" layoutY="12.0" styleClass="hbox-title" text="Opciones de Administrador" />
                                  </children>
                               </Pane>
                            </children>
