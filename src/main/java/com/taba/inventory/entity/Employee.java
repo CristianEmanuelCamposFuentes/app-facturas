@@ -25,8 +25,6 @@ public class Employee implements Serializable {
     private String password;
     @Column(name = "phone")
     private String phone;
-    @Column(name = "address")
-    private String address;
     @Column(name = "type", insertable = false)
     private String type;
     
@@ -34,35 +32,32 @@ public class Employee implements Serializable {
     
     }
 
-    public Employee(String firstName, String lastName, String userName, String password, String phone, String address) {
+    public Employee(String firstName, String lastName, String userName, String password, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
         this.phone = phone;
-        this.address = address;
     }
 
     public Employee(long id, String firstName, String lastName, 
-            String userName, String password, String phone, String address) {
+            String userName, String password, String phone) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
         this.phone = phone;
-        this.address = address;
     }
 
     public Employee(long id, String firstName, String lastName, 
-            String userName, String password, String phone, String address, String type) {
+            String userName, String password, String phone, String type) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
         this.password = password;
         this.phone = phone;
-        this.address = address;
         this.type = type;
     }
     
@@ -112,14 +107,6 @@ public class Employee implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getType() {
