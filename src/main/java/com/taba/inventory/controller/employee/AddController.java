@@ -74,23 +74,23 @@ public class AddController implements Initializable, EmployeeInterface {
         String errorMessage = "";
 
         if (firstField.getText() == null || firstField.getText().isEmpty()) {
-            errorMessage += "No valid first name!\n";
+            errorMessage += "Nombre incorrecto!\n";
         }
 
         if (lastField.getText() == null || lastField.getText().isEmpty()) {
-            errorMessage += "No valid last name!\n";
+            errorMessage += "Apellidos incorrectos!\n";
         }
 
         if (usernameField.getText() == null || usernameField.getText().isEmpty()) {
-            errorMessage += "No valid username!\n";
+            errorMessage += "Usuario incorrecto!\n";
         }
 
         if (passwordField.getText() == null || passwordField.getText().isEmpty()) {
-            errorMessage += "No valid password!\n";
+            errorMessage += "Contraseña incorrecta!\n";
         }
 
         if (phoneField.getText() == null || phoneField.getText().isEmpty()) {
-            errorMessage += "No valid phone number!\n";
+            errorMessage += "Email incorrecto!\n";
         }
 
         if (errorMessage.isEmpty()) {

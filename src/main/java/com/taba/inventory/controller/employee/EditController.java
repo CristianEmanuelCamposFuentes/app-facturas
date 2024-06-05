@@ -99,35 +99,31 @@ public class EditController implements Initializable, EmployeeInterface {
         String errorMessage = "";
 
         if (firstField.getText() == null || firstField.getText().isEmpty()) {
-            errorMessage += "No valid first name!\n";
+            errorMessage += "Nombre incorrecto!\n";
         }
 
         if (lastField.getText() == null || lastField.getText().isEmpty()) {
-            errorMessage += "No valid last name!\n";
+            errorMessage += "Apellidos incorrectos!\n";
         }
 
         if (usernameField.getText() == null || usernameField.getText().isEmpty()) {
-            errorMessage += "No valid username!\n";
+            errorMessage += "Usuario incorrecto!\n";
         }
 
         if (passwordField.getText() == null || passwordField.getText().isEmpty()) {
-            errorMessage += "No valid password!\n";
+            errorMessage += "Contraseña incorrecta!\n";
         }
 
         if (phoneField.getText() == null || phoneField.getText().isEmpty()) {
-            errorMessage += "No valid phone number!\n";
-        }
-
-        if (addressArea.getText() == null || addressArea.getText().isEmpty()) {
-            errorMessage += "No email address!\n";
+            errorMessage += "Email incorrecto!\n";
         }
 
         if (errorMessage.isEmpty()) {
             return true;
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
+            alert.setTitle("Campos incorrectos");
+            alert.setHeaderText("Por favor, corrija los campos incompletos");
             alert.setContentText(errorMessage);
             alert.showAndWait();
 
