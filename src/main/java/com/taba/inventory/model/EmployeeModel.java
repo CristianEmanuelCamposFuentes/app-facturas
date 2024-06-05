@@ -72,7 +72,6 @@ public class EmployeeModel implements EmployeeDao {
         e.setUserName(employee.getUserName());
         e.setPassword(employee.getPassword());
         e.setPhone(employee.getPhone());
-        e.setAddress(employee.getAddress());
         session.getTransaction().commit();
     }
 

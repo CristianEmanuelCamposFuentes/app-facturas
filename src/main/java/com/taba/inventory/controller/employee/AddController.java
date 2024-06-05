@@ -25,8 +25,6 @@ public class AddController implements Initializable, EmployeeInterface {
     @FXML
     private PasswordField passwordField;
     @FXML
-    private TextArea addressArea;
-    @FXML
     private Button saveButton;
     private EmployeeModel employeeModel;
 
@@ -42,7 +40,6 @@ public class AddController implements Initializable, EmployeeInterface {
         usernameField.setText("");
         passwordField.setText("");
         phoneField.setText("");
-        addressArea.setText("");
     }
 
     @FXML
@@ -55,8 +52,7 @@ public class AddController implements Initializable, EmployeeInterface {
                     lastField.getText(),
                     usernameField.getText(),
                     DigestUtils.sha1Hex(passwordField.getText()),
-                    phoneField.getText(),
-                    addressArea.getText()
+                    phoneField.getText()
             );
 
             employeeModel.saveEmployee(employee);
@@ -66,9 +62,9 @@ public class AddController implements Initializable, EmployeeInterface {
             ((Stage) saveButton.getScene().getWindow()).close();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Successful");
-            alert.setHeaderText("Employe Created!");
-            alert.setContentText("Employee is created successfully");
+            alert.setTitle("Completado");
+            alert.setHeaderText("Empleado Creado!");
+            alert.setContentText("El empleado fue creado exitosamente");
             alert.showAndWait();
         }
     }
@@ -77,36 +73,32 @@ public class AddController implements Initializable, EmployeeInterface {
 
         String errorMessage = "";
 
-        if (firstField.getText() == null || firstField.getText().length() == 0) {
+        if (firstField.getText() == null || firstField.getText().isEmpty()) {
             errorMessage += "No valid first name!\n";
         }
 
-        if (lastField.getText() == null || lastField.getText().length() == 0) {
+        if (lastField.getText() == null || lastField.getText().isEmpty()) {
             errorMessage += "No valid last name!\n";
         }
 
-        if (usernameField.getText() == null || usernameField.getText().length() == 0) {
+        if (usernameField.getText() == null || usernameField.getText().isEmpty()) {
             errorMessage += "No valid username!\n";
         }
 
-        if (passwordField.getText() == null || passwordField.getText().length() == 0) {
+        if (passwordField.getText() == null || passwordField.getText().isEmpty()) {
             errorMessage += "No valid password!\n";
         }
 
-        if (phoneField.getText() == null || phoneField.getText().length() == 0) {
+        if (phoneField.getText() == null || phoneField.getText().isEmpty()) {
             errorMessage += "No valid phone number!\n";
         }
 
-        if (addressArea.getText() == null || addressArea.getText().length() == 0) {
-            errorMessage += "No email address!\n";
-        }
-
-        if (errorMessage.length() == 0) {
+        if (errorMessage.isEmpty()) {
             return true;
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Invalid Fields");
-            alert.setHeaderText("Please correct invalid fields");
+            alert.setTitle("Campos incorrectos");
+            alert.setHeaderText("Por favor, corrija los campos incompletos");
             alert.setContentText(errorMessage);
             alert.showAndWait();
 

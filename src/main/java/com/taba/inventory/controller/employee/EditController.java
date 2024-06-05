@@ -65,9 +65,9 @@ public class EditController implements Initializable, EmployeeInterface {
             ((Stage) saveButton.getScene().getWindow()).close();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Successful");
-            alert.setHeaderText("Employee Updated!");
-            alert.setContentText("Employee is updated successfully");
+            alert.setTitle("Completado");
+            alert.setHeaderText("Empleado actualizado!");
+            alert.setContentText("Empleado actualizado exitosamente");
             alert.showAndWait();
         }
     }
@@ -78,7 +78,6 @@ public class EditController implements Initializable, EmployeeInterface {
         usernameField.setText(employee.getUserName());
         passwordField.setText(employee.getPassword());
         phoneField.setText(employee.getPhone());
-        addressArea.setText(employee.getAddress());
     }
 
     private void resetValues() {
@@ -99,31 +98,31 @@ public class EditController implements Initializable, EmployeeInterface {
 
         String errorMessage = "";
 
-        if (firstField.getText() == null || firstField.getText().length() == 0) {
+        if (firstField.getText() == null || firstField.getText().isEmpty()) {
             errorMessage += "No valid first name!\n";
         }
 
-        if (lastField.getText() == null || lastField.getText().length() == 0) {
+        if (lastField.getText() == null || lastField.getText().isEmpty()) {
             errorMessage += "No valid last name!\n";
         }
 
-        if (usernameField.getText() == null || usernameField.getText().length() == 0) {
+        if (usernameField.getText() == null || usernameField.getText().isEmpty()) {
             errorMessage += "No valid username!\n";
         }
 
-        if (passwordField.getText() == null || passwordField.getText().length() == 0) {
+        if (passwordField.getText() == null || passwordField.getText().isEmpty()) {
             errorMessage += "No valid password!\n";
         }
 
-        if (phoneField.getText() == null || phoneField.getText().length() == 0) {
+        if (phoneField.getText() == null || phoneField.getText().isEmpty()) {
             errorMessage += "No valid phone number!\n";
         }
 
-        if (addressArea.getText() == null || addressArea.getText().length() == 0) {
+        if (addressArea.getText() == null || addressArea.getText().isEmpty()) {
             errorMessage += "No email address!\n";
         }
 
-        if (errorMessage.length() == 0) {
+        if (errorMessage.isEmpty()) {
             return true;
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
