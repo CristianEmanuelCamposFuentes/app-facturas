@@ -1,0 +1,19 @@
+/* variables.css */
+:root {
+    --main-bg-color: rgba(250, 2, 23, 1);
+    --text-color: rgba(37, 34, 34, 1);
+    --logo-bg-color: rgba(143, 39, 21, 1);
+    --title-text-color: rgba(51, 51, 51, 0.8);
+    --title-font-family: cursive;
+    --control-bg-color: rgba(176, 9, 23, 1);
+    --button-bg-color: rgba(193, 3, 19, 1);
+    --button-hover-bg-color: rgba(255, 255, 247, 0.2);
+    --sidebar-bg-color: rgba(51, 50, 68, 1);
+    --menu-button-text-color: rgba(93, 93, 119, 1);
+    --menu-button-hover-bg-color: rgba(44, 43, 61, 1);
+    --menu-button-border-color: rgba(114, 29, 29, 1);
+    --panel-border-color: rgba(72, 78, 72, 0.5);
+    --user-text-color: #3f0909;
+    --panel-bg-color: rgba(160, 10, 10, 1);
+    --header-bg-color: rgba(167, 20, 20, 1);
+}

@@ -31,9 +31,11 @@ public class MainApp extends Application {
             stage.setY(event.getScreenY() - yOffset);
         });
         Scene scene = new Scene(root);
-        stage.setTitle("Inventory:: Version 1.0");
-        stage.getIcons().add(new Image("/images/logo.png"));
+        stage.setTitle("Gestión de Inventario");
+        stage.getIcons().add(new Image("/images/logo_palmesano.png"));
         stage.initStyle(StageStyle.UNDECORATED);
+        String css = Objects.requireNonNull(this.getClass().getResource("/styles/admin.css")).toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
     }
@@ -46,9 +48,9 @@ public class MainApp extends Application {
         } else {
             Platform.runLater(() -> {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("An error has occurred!");
-                alert.setHeaderText("Database Connection Error!");
-                alert.setContentText("Please contact the developer");
+                alert.setTitle("Ha ocurrido un error!");
+                alert.setHeaderText("Error de conexión a la base de datos!");
+                alert.setContentText("Por favor contacte con el administrador del sistema.");
                 alert.showAndWait();
                 Platform.exit();
             });

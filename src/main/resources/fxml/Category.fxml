@@ -37,7 +37,7 @@
                         </Pane>
                         <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="-86.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/palmesano_logo.png" />
+                              <Image url="@../images/logo_palmesano.png" />
                            </image>
                         </ImageView>
                      </children>
