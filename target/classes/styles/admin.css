@@ -9,11 +9,11 @@
 }
 
 .hbox-top-background {
-    -fx-background-color: rgba(255, 255, 255, 1); /* Blanco */
+    -fx-background-color: linear-gradient(to right, rgb(216, 137, 137), rgb(139, 0, 0)); /* Rojo fuego a oscuro */
 }
 
 .logo-background {
-    -fx-background-color: rgba(178, 34, 34, 1); /* Rojo fuego oscuro */
+/*    -fx-background-color: rgba(178, 34, 34, 1); *//* Rojo fuego oscuro */
     -fx-border-style: solid;
     -fx-border-width: 0 0 1px 0;
     -fx-border-color: rgba(178, 34, 34, 1); /* Rojo fuego oscuro */
@@ -26,7 +26,7 @@
 }
 
 .control-background {
-    -fx-background-color: rgba(165, 42, 42, 1); /* Marrón rojizo */
+/*    -fx-background-color: rgba(216, 137, 137, 1); *//* Marrón rojizo */
     -fx-border-style: solid;
     -fx-border-width: 0 0 1px 0;
     -fx-border-color: rgba(165, 42, 42, 1); /* Marrón rojizo */
@@ -114,7 +114,7 @@
 }
 
 .logo-image {
-    -fx-background-color: white;
+    -fx-background-color: rgba(51, 50, 68, 1); /* Gris oscuro */
     -fx-padding: 5px;
     -fx-border-color: #ddd;
     -fx-border-width: 1px;
