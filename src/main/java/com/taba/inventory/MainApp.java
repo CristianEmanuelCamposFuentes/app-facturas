@@ -34,8 +34,6 @@ public class MainApp extends Application {
         stage.setTitle("Gestión de Inventario");
         stage.getIcons().add(new Image("/images/logo_palmesano.png"));
         stage.initStyle(StageStyle.UNDECORATED);
-        String css = Objects.requireNonNull(this.getClass().getResource("/styles/admin.css")).toExternalForm();
-        scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
     }
