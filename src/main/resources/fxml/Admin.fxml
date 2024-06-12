@@ -24,6 +24,7 @@
          </Pane>
       </HBox>
    </HBox>
+<!--   PANEL CENTRAL    -->
    <StackPane alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="760.0">
          <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="760.0" styleClass="vbox-panel" HBox.hgrow="ALWAYS">
@@ -56,6 +57,7 @@
             </HBox>
          </VBox>
       </HBox>
+<!--      MENU OCULTO      -->
       <VBox fx:id="drawer" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="200.0" styleClass="sidebar-menu" translateX="-200.0">
          <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="200.0" styleClass="pane-user">
             <ImageView fitHeight="101.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="pane-user-pic">
@@ -123,6 +125,7 @@
                </ImageView>
             </graphic>
          </Button>
+
       </VBox>
    </StackPane>
 </VBox>
