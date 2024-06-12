@@ -7,153 +7,119 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0"
-      prefWidth="760.0" stylesheets="@../styles/admin.css" xmlns="http://javafx.com/javafx/11.0.14-internal"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taba.inventory.controller.admin.AdminController">
-   <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="760.0"
-         styleClass="hbox-top-background">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="760.0" stylesheets="@../styles/admin.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taba.inventory.controller.admin.AdminController">
+   <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="760.0" styleClass="hbox-top-background">
       <VBox.margin>
-         <Insets/>
+         <Insets />
       </VBox.margin>
-      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="65.0" prefWidth="123.0" styleClass="logo-background">
-         <Button fx:id="menu" alignment="TOP_CENTER" blendMode="HARD_LIGHT" cache="true" cacheHint="SPEED"
-                 contentDisplay="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="40.0"
-                 styleClass="hamburger-button" textOverrun="CLIP" translateX="-30.0"/>
+      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="123.0" styleClass="logo-background">
+         <Button fx:id="menu" alignment="TOP_CENTER" blendMode="HARD_LIGHT" cache="true" cacheHint="SPEED" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="37.0" prefWidth="40.0" styleClass="hamburger-button" textOverrun="CLIP" translateX="-30.0" />
       </HBox>
-      <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="325.0"
-            spacing="5.0" styleClass="control-background" HBox.hgrow="ALWAYS">
-         <Pane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="675.0"
-               HBox.hgrow="ALWAYS">
-            <Button layoutX="503.0" layoutY="18.0" mnemonicParsing="false" onAction="#logoutAction" prefHeight="30.0"
-                    prefWidth="30.0" styleClass="logout-button"/>
-            <ImageView blendMode="SRC_ATOP" fitHeight="56.0" fitWidth="200.0" layoutY="8.0" nodeOrientation="INHERIT"
-                       pickOnBounds="true" preserveRatio="true" smooth="false" styleClass="logo-image">
-               <Image url="@../images/logo_palmesano.png"/>
+      <HBox alignment="CENTER_RIGHT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="325.0" spacing="5.0" styleClass="control-background" HBox.hgrow="ALWAYS">
+         <Pane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="675.0" HBox.hgrow="ALWAYS">
+            <Button layoutX="503.0" layoutY="18.0" mnemonicParsing="false" onAction="#logoutAction" prefHeight="30.0" prefWidth="30.0" styleClass="logout-button" />
+            <ImageView blendMode="SRC_ATOP" fitHeight="56.0" fitWidth="200.0" layoutY="8.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" smooth="false" styleClass="logo-image">
+               <Image url="@../images/logo_palmesano.png" />
             </ImageView>
          </Pane>
       </HBox>
    </HBox>
-   <StackPane alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="760.0"
-              VBox.vgrow="ALWAYS">
+   <StackPane alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="760.0">
-         <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="760.0" styleClass="vbox-panel"
-               HBox.hgrow="ALWAYS">
-            <HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="740.0"
-                  styleClass="hbox-header" VBox.vgrow="NEVER">
+         <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="760.0" styleClass="vbox-panel" HBox.hgrow="ALWAYS">
+            <HBox maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="740.0" styleClass="hbox-header" VBox.vgrow="NEVER">
                <Pane minWidth="-Infinity" prefHeight="200.0" prefWidth="760.0" HBox.hgrow="ALWAYS">
                   <HBox.margin>
-                     <Insets/>
+                     <Insets />
                   </HBox.margin>
-                  <Label layoutX="14.0" layoutY="12.0" styleClass="hbox-title" text="Opciones de Administrador"/>
+                  <Label layoutX="14.0" layoutY="12.0" styleClass="hbox-title" text="Opciones de Administrador" />
                </Pane>
             </HBox>
-            <LineChart fx:id="invoiceChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="233.0"
-                       prefWidth="760.0" title="Sales Report" VBox.vgrow="ALWAYS">
+            <LineChart fx:id="invoiceChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="233.0" prefWidth="760.0" title="Sales Report" VBox.vgrow="ALWAYS">
                <xAxis>
-                  <CategoryAxis fx:id="ixAxis" side="BOTTOM"/>
+                  <CategoryAxis fx:id="ixAxis" side="BOTTOM" />
                </xAxis>
                <yAxis>
-                  <NumberAxis fx:id="syAxis" label="Revenue" side="LEFT"/>
+                  <NumberAxis fx:id="syAxis" label="Revenue" side="LEFT" />
                </yAxis>
             </LineChart>
             <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
-               <PieChart fx:id="stockChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0"
-                         prefWidth="380.0" title="Stock" HBox.hgrow="ALWAYS"/>
-               <BarChart fx:id="productsChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0"
-                         prefWidth="380.0" title="Products" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+               <PieChart fx:id="stockChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0" prefWidth="380.0" title="Stock" HBox.hgrow="ALWAYS" />
+               <BarChart fx:id="productsChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0" prefWidth="380.0" title="Products" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                   <xAxis>
-                     <CategoryAxis fx:id="pxAxis" side="BOTTOM"/>
+                     <CategoryAxis fx:id="pxAxis" side="BOTTOM" />
                   </xAxis>
                   <yAxis>
-                     <NumberAxis fx:id="pyAxis" side="LEFT"/>
+                     <NumberAxis fx:id="pyAxis" side="LEFT" />
                   </yAxis>
                </BarChart>
             </HBox>
          </VBox>
       </HBox>
-      <VBox fx:id="drawer" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0"
-            prefWidth="200.0" styleClass="sidebar-menu" translateX="-200.0">
-         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0"
-               prefWidth="200.0" styleClass="pane-user">
-            <ImageView fitHeight="101.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true"
-                       preserveRatio="true" styleClass="pane-user-pic">
-               <Image url="@../images/user.png"/>
+      <VBox fx:id="drawer" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="200.0" styleClass="sidebar-menu" translateX="-200.0">
+         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="200.0" styleClass="pane-user">
+            <ImageView fitHeight="101.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="pane-user-pic">
+               <Image url="@../images/user.png" />
             </ImageView>
-            <Label fx:id="userLabel" layoutX="56.0" layoutY="121.0" styleClass="pane-user-text" text="Bond, James"/>
+            <Label fx:id="userLabel" layoutX="56.0" layoutY="121.0" styleClass="pane-user-text" text="Administrador" />
          </Pane>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Administrator">
+         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Administrador">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/admin.png"/>
+                  <Image url="@../images/admin.png" />
                </ImageView>
             </graphic>
             <styleClass>
-               <String fx:value="menu-buttons"/>
-               <String fx:value="menu-buttons-selected"/>
+               <String fx:value="menu-buttons" />
+               <String fx:value="menu-buttons-selected" />
             </styleClass>
          </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#productAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Product">
+         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#productAction" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons" text="Productos">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/product.png"/>
+                  <Image url="@../images/product.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#categoryAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Category">
+         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#categoryAction" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons" text="Categorias">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/category.png"/>
+                  <Image url="@../images/category.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#supplierAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Supplier">
+         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#supplierAction" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons" text="Proveedor">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/supplier.png"/>
+                  <Image url="@../images/supplier.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#purchaseAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Purchase">
+         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#purchaseAction" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons" text="Compras">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/purchase.png"/>
+                  <Image url="@../images/purchase.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#salesAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Sales">
+         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salesAction" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons" text="Ventas">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/sale.png"/>
+                  <Image url="@../images/sale.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#staffAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Staff">
+         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#staffAction" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons" text="Empleados">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/employee.png"/>
+                  <Image url="@../images/employee.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#reportAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Report">
+         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#reportAction" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons" text="Reportes">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/invoice.png"/>
+                  <Image url="@../images/invoice.png" />
                </ImageView>
             </graphic>
          </Button>
