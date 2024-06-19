@@ -5,34 +5,31 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="450.0" styleClass="vBox-background" stylesheets="@../styles/confirm.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="450.0" VBox.vgrow="NEVER">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="close-button" />
-         </children>
+<VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380.0" prefWidth="450.0"
+      styleClass="vBox-background" stylesheets="@../styles/confirm.css"
+      xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+   <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="450.0"
+         VBox.vgrow="NEVER">
+      <padding>
+         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+      </padding>
+      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="close-button"/>
+   </HBox>
+   <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="450.0"
+         VBox.vgrow="ALWAYS">
+      <TextArea fx:id="billingArea" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+                minWidth="-Infinity" prefHeight="250.0" prefWidth="430.0">
          <padding>
-            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
          </padding>
-      </HBox>
-      <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="450.0" VBox.vgrow="ALWAYS">
-         <children>
-            <TextArea fx:id="billingArea" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="430.0">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </TextArea>
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="450.0" VBox.vgrow="NEVER">
-         <children>
-            <Label fx:id="retailLabel" styleClass="retail" text="Retail: " />
-            <Button mnemonicParsing="false" onAction="#doneAction" prefHeight="25.0" prefWidth="80.0" text="Aceptar">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-         </children>
-      </VBox>
-   </children>
+      </TextArea>
+   </VBox>
+   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="450.0" VBox.vgrow="NEVER">
+      <Label fx:id="retailLabel" styleClass="retail" text="Retail: "/>
+      <Button mnemonicParsing="false" onAction="#doneAction" prefHeight="25.0" prefWidth="80.0" text="Aceptar">
+         <font>
+            <Font name="System Bold" size="12.0"/>
+         </font>
+      </Button>
+   </VBox>
 </VBox>
