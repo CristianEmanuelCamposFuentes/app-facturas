@@ -24,6 +24,7 @@
          </Pane>
       </HBox>
    </HBox>
+<!--   PANEL CENTRAL    -->
    <StackPane alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="760.0">
          <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="760.0" styleClass="vbox-panel" HBox.hgrow="ALWAYS">
@@ -124,8 +125,7 @@
                </ImageView>
             </graphic>
          </Button>
-         <Button text="Agregar insumo" />
-         <Button text="Editar insumo" />
+
       </VBox>
    </StackPane>
 </VBox>

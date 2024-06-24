@@ -9,7 +9,6 @@ import java.text.DateFormatSymbols;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
 import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

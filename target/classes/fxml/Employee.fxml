@@ -26,31 +26,27 @@
             spacing="5.0" styleClass="control-background" HBox.hgrow="ALWAYS">
          <Pane maxHeight="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0"
                prefWidth="340.0" HBox.hgrow="ALWAYS">
-            <children>
-               <Button layoutX="503.0" layoutY="18.0" mnemonicParsing="false" onAction="#logoutAction"
-                       prefHeight="30.0" prefWidth="30.0" styleClass="logout-button"/>
-               <Pane layoutX="267.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity"
-                     minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0">
-                  <children>
-                     <Separator layoutX="15.0" layoutY="51.0" maxWidth="-Infinity" minHeight="-Infinity"
-                                minWidth="-Infinity" prefWidth="170.0" valignment="BOTTOM"/>
-                     <TextField fx:id="searchField" alignment="CENTER" layoutX="14.0" layoutY="14.0"
-                                minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="170.0"
-                                promptText="Buscar" styleClass="search-field">
-                        <font>
-                           <Font name="System Bold Italic" size="12.0"/>
-                        </font>
-                        <effect>
-                           <ColorAdjust brightness="-0.12" contrast="0.54" hue="-1.0"/>
-                        </effect>
-                     </TextField>
-                  </children>
-               </Pane>
-               <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="-86.0" layoutY="8.0" pickOnBounds="true"
-                          preserveRatio="true">
-                  <Image url="@../images/logo_palmesano.png"/>
-               </ImageView>
-            </children>
+            <Button layoutX="503.0" layoutY="18.0" mnemonicParsing="false" onAction="#logoutAction"
+                    prefHeight="30.0" prefWidth="30.0" styleClass="logout-button"/>
+            <Pane layoutX="267.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity"
+                  minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="200.0">
+               <Separator layoutX="15.0" layoutY="51.0" maxWidth="-Infinity" minHeight="-Infinity"
+                          minWidth="-Infinity" prefWidth="170.0" valignment="BOTTOM"/>
+               <TextField fx:id="searchField" alignment="CENTER" layoutX="14.0" layoutY="14.0"
+                          minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="170.0"
+                          promptText="Buscar" styleClass="search-field">
+                  <font>
+                     <Font name="System Bold Italic" size="12.0"/>
+                  </font>
+                  <effect>
+                     <ColorAdjust brightness="-0.12" contrast="0.54" hue="-1.0"/>
+                  </effect>
+               </TextField>
+            </Pane>
+            <ImageView fitHeight="56.0" fitWidth="200.0" layoutX="-86.0" layoutY="8.0" pickOnBounds="true"
+                       preserveRatio="true">
+               <Image url="@../images/logo_palmesano.png"/>
+            </ImageView>
          </Pane>
       </HBox>
    </HBox>
