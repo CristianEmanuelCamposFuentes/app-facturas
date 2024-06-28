@@ -5,6 +5,9 @@ import com.taba.inventory.dao.CategoryDao;
 import com.taba.inventory.entity.Category;
 import java.util.List;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Criteria;
@@ -69,17 +72,36 @@ public class CategoryModel implements CategoryDao {
         session.getTransaction().commit();
     }
 
-    @Override
-    public ObservableList<String> getTypes() {
-        
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Criteria criteria = session.createCriteria(Category.class);
-        criteria.setProjection(Projections.property("type"));
-        ObservableList<String> list = FXCollections.observableArrayList(criteria.list());
-        session.getTransaction().commit();
-        
-        return list;
-    }
+//    @Override
+//    public ObservableList<String> getTypes() {
+//
+//        session = HibernateUtil.getSessionFactory().getCurrentSession();
+//        session.beginTransaction();
+//        Criteria criteria = session.createCriteria(Category.class);
+//        criteria.setProjection(Projections.property("type"));
+//        ObservableList<String> list = FXCollections.observableArrayList(criteria.list());
+//        session.getTransaction().commit();
+//
+//        return list;
+//    }
+@Override
+public ObservableList<String> getTypes() {
+    session = HibernateUtil.getSessionFactory().getCurrentSession();
+    session.beginTransaction();
+
+    // Usando CriteriaBuilder
+    CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+    CriteriaQuery<String> criteriaQuery = criteriaBuilder.createQuery(String.class);
+    Root<Category> root = criteriaQuery.from(Category.class);
+    criteriaQuery.select(root.get("type"));
+
+    List<String> typeList = session.createQuery(criteriaQuery).getResultList();
+    ObservableList<String> list = FXCollections.observableArrayList(typeList);
+
+    session.getTransaction().commit();
+
+    return list;
+}
+
 
 }

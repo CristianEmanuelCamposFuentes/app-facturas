@@ -44,7 +44,7 @@ public class EmployeeModel implements EmployeeDao {
     
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Query query = session.createQuery("from Employee where userName = :username");
+        Query query = (Query) session.createQuery("from Employee where userName = :username");
         query.setParameter("username", username);
         Employee employee = (Employee) query.uniqueResult();
         session.getTransaction().commit();
@@ -90,7 +90,7 @@ public class EmployeeModel implements EmployeeDao {
 
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Query query = session.createQuery("from Employee where userName = :username");
+        Query query = (Query) session.createQuery("from Employee where userName = :username");
         query.setParameter("username", username);
         Employee employee = (Employee) query.uniqueResult();
         session.getTransaction().commit();
@@ -103,7 +103,7 @@ public class EmployeeModel implements EmployeeDao {
 
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Query query = session.createQuery("from Employee where userName = :username");
+        Query query = (Query) session.createQuery("from Employee where userName = :username");
         query.setParameter("username", username);
         Employee employee = (Employee) query.uniqueResult();
         session.getTransaction().commit();

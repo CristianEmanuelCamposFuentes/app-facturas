@@ -6,6 +6,9 @@ import com.taba.inventory.entity.Product;
 
 import java.util.List;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Criteria;
@@ -46,7 +49,7 @@ public class ProductModel implements ProductDao {
 
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Query query = session.createQuery("from Product where productName=:name");
+        Query query = (Query) session.createQuery("from Product where productName=:name");
         query.setParameter("name", productName);
         Product product = (Product) query.uniqueResult();
         
@@ -104,16 +107,35 @@ public class ProductModel implements ProductDao {
         session.getTransaction().commit();
     }
     
+//    @Override
+//    public ObservableList<String> getProductNames2(){
+//
+//        session = HibernateUtil.getSessionFactory().getCurrentSession();
+//        session.beginTransaction();
+//        Criteria criteria = session.createCriteria(Product.class);
+//        criteria.setProjection(Projections.property("productName"));
+//        ObservableList<String> list = FXCollections.observableArrayList(criteria.list());
+//        session.getTransaction().commit();
+//
+//        return list;
+//    }
+
     @Override
-    public ObservableList<String> getProductNames(){
-    
+    public ObservableList<String> getProductNames() {
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Product.class);
-        criteria.setProjection(Projections.property("productName"));
-        ObservableList<String> list = FXCollections.observableArrayList(criteria.list());
+
+        // Usando CriteriaBuilder
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<String> criteriaQuery = criteriaBuilder.createQuery(String.class);
+        Root<Product> root = criteriaQuery.from(Product.class);
+        criteriaQuery.select(root.get("productName"));
+
+        List<String> productList = session.createQuery(criteriaQuery).getResultList();
+        ObservableList<String> list = FXCollections.observableArrayList(productList);
+
         session.getTransaction().commit();
-        
+
         return list;
     }
 }

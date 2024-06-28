@@ -5,6 +5,9 @@ import com.taba.inventory.dao.SupplierDao;
 import com.taba.inventory.entity.Supplier;
 import java.util.List;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Criteria;
@@ -70,17 +73,39 @@ public class SupplierModel implements SupplierDao {
         session.getTransaction().commit();
     }
     
+//    @Override
+//    public ObservableList<String> getNames(){
+//
+//        session = HibernateUtil.getSessionFactory().getCurrentSession();
+//        session.beginTransaction();
+//        Criteria criteria = session.createCriteria(Supplier.class);
+//        criteria.setProjection(Projections.property("name"));
+//        ObservableList<String> list = FXCollections.observableArrayList(criteria.list());
+//        session.getTransaction().commit();
+//
+//        return list;
+//    }
+
     @Override
-    public ObservableList<String> getNames(){
-    
+    public ObservableList<String> getNames() {
+
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Supplier.class);
-        criteria.setProjection(Projections.property("name"));
-        ObservableList<String> list = FXCollections.observableArrayList(criteria.list());
+
+        // Usando CriteriaBuilder
+        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+        CriteriaQuery<String> criteriaQuery = criteriaBuilder.createQuery(String.class);
+        Root<Supplier> root = criteriaQuery.from(Supplier.class);
+
+        // Seleccionando la propiedad "name"
+        criteriaQuery.select(root.get("name"));
+
+        List<String> names = session.createQuery(criteriaQuery).getResultList();
+
         session.getTransaction().commit();
-        
-        return list;
+
+        return FXCollections.observableArrayList(names);
     }
+
 
 }
