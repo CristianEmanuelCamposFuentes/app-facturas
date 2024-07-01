@@ -19,8 +19,10 @@ public class CategoryModel implements CategoryDao {
     public ObservableList<Category> getCategories() {
         ObservableList<Category> list = FXCollections.observableArrayList();
         Transaction transaction = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             List<Category> categories = session.createQuery("from Category").list();
             categories.forEach(list::add);
@@ -30,6 +32,10 @@ public class CategoryModel implements CategoryDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
 
         return list;
@@ -39,8 +45,10 @@ public class CategoryModel implements CategoryDao {
     public Category getCategory(long id) {
         Transaction transaction = null;
         Category category = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             category = session.get(Category.class, id);
             transaction.commit();
@@ -49,6 +57,10 @@ public class CategoryModel implements CategoryDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
 
         return category;
@@ -57,8 +69,10 @@ public class CategoryModel implements CategoryDao {
     @Override
     public void saveCategory(Category category) {
         Transaction transaction = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             session.save(category);
             transaction.commit();
@@ -67,14 +81,20 @@ public class CategoryModel implements CategoryDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
     @Override
     public void updateCategory(Category category) {
         Transaction transaction = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Category c = session.get(Category.class, category.getId());
             c.setType(category.getType());
@@ -86,14 +106,20 @@ public class CategoryModel implements CategoryDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
     @Override
     public void deleteCategory(Category category) {
         Transaction transaction = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Category c = session.get(Category.class, category.getId());
             session.delete(c);
@@ -103,6 +129,10 @@ public class CategoryModel implements CategoryDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
@@ -110,8 +140,10 @@ public class CategoryModel implements CategoryDao {
     public ObservableList<String> getTypes() {
         ObservableList<String> list = FXCollections.observableArrayList();
         Transaction transaction = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
             CriteriaQuery<String> criteriaQuery = criteriaBuilder.createQuery(String.class);
@@ -126,9 +158,14 @@ public class CategoryModel implements CategoryDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
 
         return list;
     }
 }
+
 

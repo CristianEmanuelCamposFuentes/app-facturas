@@ -16,8 +16,10 @@ public class EmployeeModel implements EmployeeDao {
     public ObservableList<Employee> getEmployees() {
         ObservableList<Employee> list = FXCollections.observableArrayList();
         Transaction transaction = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             List<Employee> employees = session.createQuery("from Employee", Employee.class).list();
             employees.forEach(list::add);
@@ -27,6 +29,10 @@ public class EmployeeModel implements EmployeeDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
 
         return list;
@@ -36,8 +42,10 @@ public class EmployeeModel implements EmployeeDao {
     public Employee getEmployee(long id) {
         Transaction transaction = null;
         Employee employee = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             employee = session.get(Employee.class, id);
             transaction.commit();
@@ -46,6 +54,10 @@ public class EmployeeModel implements EmployeeDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
 
         return employee;
@@ -55,8 +67,10 @@ public class EmployeeModel implements EmployeeDao {
     public String getEmployeeType(String username) {
         Transaction transaction = null;
         String type = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Employee employee = session.createQuery("from Employee where userName = :username", Employee.class)
                     .setParameter("username", username)
@@ -70,6 +84,10 @@ public class EmployeeModel implements EmployeeDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
 
         return type;
@@ -78,8 +96,10 @@ public class EmployeeModel implements EmployeeDao {
     @Override
     public void saveEmployee(Employee employee) {
         Transaction transaction = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             session.save(employee);
             transaction.commit();
@@ -88,14 +108,20 @@ public class EmployeeModel implements EmployeeDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
     @Override
     public void updateEmployee(Employee employee) {
         Transaction transaction = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Employee e = session.get(Employee.class, employee.getId());
             if (e != null) {
@@ -112,14 +138,20 @@ public class EmployeeModel implements EmployeeDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
     @Override
     public void deleteEmployee(Employee employee) {
         Transaction transaction = null;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Employee e = session.get(Employee.class, employee.getId());
             if (e != null) {
@@ -131,6 +163,10 @@ public class EmployeeModel implements EmployeeDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
     }
 
@@ -138,8 +174,10 @@ public class EmployeeModel implements EmployeeDao {
     public boolean checkUser(String username) {
         Transaction transaction = null;
         boolean exists = false;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Employee employee = session.createQuery("from Employee where userName = :username", Employee.class)
                     .setParameter("username", username)
@@ -151,6 +189,10 @@ public class EmployeeModel implements EmployeeDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
 
         return exists;
@@ -160,8 +202,10 @@ public class EmployeeModel implements EmployeeDao {
     public boolean checkPassword(String username, String password) {
         Transaction transaction = null;
         boolean matches = false;
+        Session session = null;
 
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             Employee employee = session.createQuery("from Employee where userName = :username", Employee.class)
                     .setParameter("username", username)
@@ -175,6 +219,10 @@ public class EmployeeModel implements EmployeeDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
         }
 
         return matches;
