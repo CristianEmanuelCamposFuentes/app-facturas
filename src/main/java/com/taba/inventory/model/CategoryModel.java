@@ -3,105 +3,132 @@ package com.taba.inventory.model;
 import com.taba.inventory.HibernateUtil;
 import com.taba.inventory.dao.CategoryDao;
 import com.taba.inventory.entity.Category;
-import java.util.List;
-
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Projections;
+import org.hibernate.Transaction;
+
+import java.util.List;
 
 public class CategoryModel implements CategoryDao {
 
-    private static Session session;
-
     @Override
     public ObservableList<Category> getCategories() {
-
         ObservableList<Category> list = FXCollections.observableArrayList();
+        Transaction transaction = null;
 
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        List<Category> categories = session.createQuery("from Category").list();
-        session.beginTransaction().commit();
-        categories.stream().forEach(list::add);
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            List<Category> categories = session.createQuery("from Category").list();
+            categories.forEach(list::add);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
 
         return list;
     }
 
     @Override
     public Category getCategory(long id) {
+        Transaction transaction = null;
+        Category category = null;
 
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Category category = session.get(Category.class, id);
-        session.getTransaction().commit();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            category = session.get(Category.class, id);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
 
         return category;
     }
 
     @Override
     public void saveCategory(Category category) {
+        Transaction transaction = null;
 
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        session.save(category);
-        session.getTransaction().commit();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(category);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void updateCategory(Category category) {
+        Transaction transaction = null;
 
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Category c = session.get(Category.class, category.getId());
-        c.setType(category.getType());
-        c.setDescription(category.getDescription());
-        session.getTransaction().commit();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Category c = session.get(Category.class, category.getId());
+            c.setType(category.getType());
+            c.setDescription(category.getDescription());
+            session.update(c);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void deleteCategory(Category category) {
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Category c = session.get(Category.class, category.getId());
-        session.delete(c);
-        session.getTransaction().commit();
+        Transaction transaction = null;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Category c = session.get(Category.class, category.getId());
+            session.delete(c);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
-//    @Override
-//    public ObservableList<String> getTypes() {
-//
-//        session = HibernateUtil.getSessionFactory().getCurrentSession();
-//        session.beginTransaction();
-//        Criteria criteria = session.createCriteria(Category.class);
-//        criteria.setProjection(Projections.property("type"));
-//        ObservableList<String> list = FXCollections.observableArrayList(criteria.list());
-//        session.getTransaction().commit();
-//
-//        return list;
-//    }
-@Override
-public ObservableList<String> getTypes() {
-    session = HibernateUtil.getSessionFactory().getCurrentSession();
-    session.beginTransaction();
+    @Override
+    public ObservableList<String> getTypes() {
+        ObservableList<String> list = FXCollections.observableArrayList();
+        Transaction transaction = null;
 
-    // Usando CriteriaBuilder
-    CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-    CriteriaQuery<String> criteriaQuery = criteriaBuilder.createQuery(String.class);
-    Root<Category> root = criteriaQuery.from(Category.class);
-    criteriaQuery.select(root.get("type"));
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+            CriteriaQuery<String> criteriaQuery = criteriaBuilder.createQuery(String.class);
+            Root<Category> root = criteriaQuery.from(Category.class);
+            criteriaQuery.select(root.get("type"));
 
-    List<String> typeList = session.createQuery(criteriaQuery).getResultList();
-    ObservableList<String> list = FXCollections.observableArrayList(typeList);
+            List<String> typeList = session.createQuery(criteriaQuery).getResultList();
+            list.addAll(typeList);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
 
-    session.getTransaction().commit();
-
-    return list;
+        return list;
+    }
 }
 
-
-}

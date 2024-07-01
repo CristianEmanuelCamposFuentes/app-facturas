@@ -11,7 +11,6 @@ import jakarta.persistence.criteria.Root;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 
 public class SalesModel implements SaleDao {
 

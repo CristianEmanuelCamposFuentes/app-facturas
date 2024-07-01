@@ -11,10 +11,8 @@ import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.criterion.Projections;
+import org.hibernate.query.Query;
 
 public class ProductModel implements ProductDao {
 
@@ -49,7 +47,7 @@ public class ProductModel implements ProductDao {
 
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
-        Query query = (Query) session.createQuery("from Product where productName=:name");
+        Query query = session.createQuery("from Product where productName=:name");
         query.setParameter("name", productName);
         Product product = (Product) query.uniqueResult();
         

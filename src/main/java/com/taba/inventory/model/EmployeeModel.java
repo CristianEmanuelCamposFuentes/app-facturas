@@ -3,111 +3,180 @@ package com.taba.inventory.model;
 import com.taba.inventory.HibernateUtil;
 import com.taba.inventory.dao.EmployeeDao;
 import com.taba.inventory.entity.Employee;
-import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+import java.util.List;
 
 public class EmployeeModel implements EmployeeDao {
 
-    private static Session session;
-
     @Override
     public ObservableList<Employee> getEmployees() {
-
         ObservableList<Employee> list = FXCollections.observableArrayList();
+        Transaction transaction = null;
 
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        List<Employee> employees = session.createQuery("from Employee").list();
-        session.beginTransaction().commit();
-        employees.stream().forEach(list::add);
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            List<Employee> employees = session.createQuery("from Employee", Employee.class).list();
+            employees.forEach(list::add);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
 
         return list;
     }
 
     @Override
     public Employee getEmployee(long id) {
+        Transaction transaction = null;
+        Employee employee = null;
 
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Employee employee = session.get(Employee.class, id);
-        session.getTransaction().commit();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            employee = session.get(Employee.class, id);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
 
         return employee;
     }
-    
+
     @Override
-    public String getEmployeeType(String username){
-    
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Query query = (Query) session.createQuery("from Employee where userName = :username");
-        query.setParameter("username", username);
-        Employee employee = (Employee) query.uniqueResult();
-        session.getTransaction().commit();
-       
-        return employee.getType();
+    public String getEmployeeType(String username) {
+        Transaction transaction = null;
+        String type = null;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Employee employee = session.createQuery("from Employee where userName = :username", Employee.class)
+                    .setParameter("username", username)
+                    .uniqueResult();
+            if (employee != null) {
+                type = employee.getType();
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+
+        return type;
     }
 
     @Override
     public void saveEmployee(Employee employee) {
+        Transaction transaction = null;
 
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        session.save(employee);
-        session.getTransaction().commit();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(employee);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void updateEmployee(Employee employee) {
+        Transaction transaction = null;
 
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Employee e = session.get(Employee.class, employee.getId());
-        e.setFirstName(employee.getFirstName());
-        e.setLastName(employee.getLastName());
-        e.setUserName(employee.getUserName());
-        e.setPassword(employee.getPassword());
-        e.setPhone(employee.getPhone());
-        session.getTransaction().commit();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Employee e = session.get(Employee.class, employee.getId());
+            if (e != null) {
+                e.setFirstName(employee.getFirstName());
+                e.setLastName(employee.getLastName());
+                e.setUserName(employee.getUserName());
+                e.setPassword(employee.getPassword());
+                e.setPhone(employee.getPhone());
+                session.update(e);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void deleteEmployee(Employee employee) {
-        
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Employee e = session.get(Employee.class, employee.getId());
-        session.delete(e);
-        session.getTransaction().commit();
+        Transaction transaction = null;
+
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Employee e = session.get(Employee.class, employee.getId());
+            if (e != null) {
+                session.delete(e);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
     }
-    
+
     @Override
     public boolean checkUser(String username) {
+        Transaction transaction = null;
+        boolean exists = false;
 
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Query query = (Query) session.createQuery("from Employee where userName = :username");
-        query.setParameter("username", username);
-        Employee employee = (Employee) query.uniqueResult();
-        session.getTransaction().commit();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Employee employee = session.createQuery("from Employee where userName = :username", Employee.class)
+                    .setParameter("username", username)
+                    .uniqueResult();
+            exists = employee != null;
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
 
-        return employee != null;
+        return exists;
     }
-    
+
     @Override
     public boolean checkPassword(String username, String password) {
+        Transaction transaction = null;
+        boolean matches = false;
 
-        session = HibernateUtil.getSessionFactory().getCurrentSession();
-        session.beginTransaction();
-        Query query = (Query) session.createQuery("from Employee where userName = :username");
-        query.setParameter("username", username);
-        Employee employee = (Employee) query.uniqueResult();
-        session.getTransaction().commit();
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            Employee employee = session.createQuery("from Employee where userName = :username", Employee.class)
+                    .setParameter("username", username)
+                    .uniqueResult();
+            if (employee != null) {
+                matches = employee.getPassword().equals(password);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
 
-        return employee.getPassword().equals(password);
+        return matches;
     }
 }

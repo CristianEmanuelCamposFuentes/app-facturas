@@ -18,14 +18,19 @@ public class HibernateUtil {
                     .configure()
                     .buildSessionFactory();
         } catch (HibernateException ex) {
+            ex.printStackTrace();
             return false;
-            
         }
-        
         return true;
     }
 
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
+    }
+
+    public static void shutdown() throws IOException {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
     }
 }

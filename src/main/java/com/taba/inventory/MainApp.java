@@ -1,7 +1,6 @@
 package com.taba.inventory;
 
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class MainApp extends Application {
@@ -39,21 +39,30 @@ public class MainApp extends Application {
     }
 
     public static void main(String[] args) {
-
         if (HibernateUtil.setSessionFactory()) {
             launch(args);
-            HibernateUtil.getSessionFactory().close();
+            try {
+                HibernateUtil.shutdown();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         } else {
-            Platform.runLater(() -> {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Ha ocurrido un error!");
-                alert.setHeaderText("Error de conexión a la base de datos!");
-                alert.setContentText("Por favor contacte con el administrador del sistema.");
-                alert.showAndWait();
+            Platform.startup(() -> {
+                showAlert();
                 Platform.exit();
             });
         }
-
     }
 
+    private static void showAlert() {
+        Platform.runLater(() -> {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Ha ocurrido un error!");
+            alert.setHeaderText("Error de conexión a la base de datos!");
+            alert.setContentText("Por favor contacte con el administrador del sistema.");
+            alert.showAndWait();
+        });
+    }
 }
+
