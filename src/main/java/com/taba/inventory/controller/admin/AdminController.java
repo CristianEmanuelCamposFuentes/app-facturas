@@ -50,7 +50,7 @@ public class AdminController implements Initializable {
     private BarChart<String, Double> productsChart;
     @FXML
     CategoryAxis pxAxis;
-    
+
     @FXML
     private PieChart stockChart;
 
@@ -89,7 +89,6 @@ public class AdminController implements Initializable {
     }
 
     private void loadInvoiceChart() {
-
         String[] months = DateFormatSymbols.getInstance(Locale.ENGLISH).getMonths();
         ObservableList lists = FXCollections.observableArrayList(months);
         XYChart.Series series = new XYChart.Series();
@@ -105,7 +104,6 @@ public class AdminController implements Initializable {
     }
 
     private void loadProductsChart() {
-
         ObservableList lists = FXCollections.observableArrayList();
         XYChart.Series<String, Double> series = new XYChart.Series<>();
 
@@ -120,50 +118,28 @@ public class AdminController implements Initializable {
     }
 
     private String convertDate(String date) {
-
         int d = Integer.parseInt(date.substring(5, 7));
         return new DateFormatSymbols().getMonths()[d - 1];
     }
-    
-    private void loadStockChart(){
-    
+
+    private void loadStockChart() {
         ObservableList<PieChart.Data> lists = FXCollections.observableArrayList();
-        
-        for(Product p : productModel.getProducts()){
-        
+
+        for (Product p : productModel.getProducts()) {
             lists.add(new PieChart.Data(p.getProductName(), p.getQuantity()));
         }
-        
+
         stockChart.getData().addAll(lists);
     }
 
     @FXML
     public void productAction(ActionEvent event) throws Exception {
-
         windows("/fxml/Product.fxml", "Product", event);
     }
 
     @FXML
     public void categoryAction(ActionEvent event) throws Exception {
-
         windows("/fxml/Category.fxml", "Category", event);
-    }
-
-    @FXML
-    public void purchaseAction(ActionEvent event) throws Exception {
-
-        windows("/fxml/Purchase.fxml", "Purchase", event);
-    }
-
-    @FXML
-    public void salesAction(ActionEvent event) throws Exception {
-
-        windows("/fxml/Sales.fxml", "Sales", event);
-    }
-
-    @FXML
-    public void supplierAction(ActionEvent event) throws Exception {
-        windows("/fxml/Supplier.fxml", "Supplier", event);
     }
 
     @FXML
@@ -198,7 +174,6 @@ public class AdminController implements Initializable {
     }
 
     private void windows(String path, String title, ActionEvent event) throws Exception {
-
         double width = ((Node) event.getSource()).getScene().getWidth();
         double height = ((Node) event.getSource()).getScene().getHeight();
 
