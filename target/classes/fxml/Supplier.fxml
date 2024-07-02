@@ -5,9 +5,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.effect.ColorAdjust?>
+
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0"
       prefWidth="760.0" stylesheets="@../styles/admin.css" xmlns="http://javafx.com/javafx/11.0.14-internal"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.taba.inventory.controller.supplier.SupplierController">
@@ -139,20 +139,17 @@
             </graphic>
          </Button>
          <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Supplier">
+                 mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons"
+                 text="Sales">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/supplier.png"/>
+                  <Image url="@../images/sales.png"/>
                </ImageView>
             </graphic>
-            <styleClass>
-               <String fx:value="menu-buttons"/>
-               <String fx:value="menu-buttons-selected"/>
-            </styleClass>
          </Button>
          <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#purchaseAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Purchase">
+                 mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons"
+                 text="Purchase">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                   <Image url="@../images/purchase.png"/>
@@ -160,29 +157,12 @@
             </graphic>
          </Button>
          <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#salesAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Sales">
+                 mnemonicParsing="false" onAction="#supplierAction" prefHeight="40.0" prefWidth="200.0"
+
+                 styleClass="menu-buttons" text="Supplier">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/sale.png"/>
-               </ImageView>
-            </graphic>
-         </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#staffAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Staff">
-            <graphic>
-               <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/employee.png"/>
-               </ImageView>
-            </graphic>
-         </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-                 mnemonicParsing="false" onAction="#reportAction" prefHeight="40.0" prefWidth="200.0"
-                 styleClass="menu-buttons" text="Report">
-            <graphic>
-               <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/invoice.png"/>
+                  <Image url="@../images/supplier.png"/>
                </ImageView>
             </graphic>
          </Button>

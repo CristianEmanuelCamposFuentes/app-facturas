@@ -24,7 +24,7 @@
          </Pane>
       </HBox>
    </HBox>
-<!--   PANEL CENTRAL    -->
+   <!--   PANEL CENTRAL    -->
    <StackPane alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="760.0" VBox.vgrow="ALWAYS">
       <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="760.0">
          <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="760.0" styleClass="vbox-panel" HBox.hgrow="ALWAYS">
@@ -57,7 +57,7 @@
             </HBox>
          </VBox>
       </HBox>
-<!--      MENU OCULTO      -->
+      <!--      MENU OCULTO      -->
       <VBox fx:id="drawer" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="200.0" styleClass="sidebar-menu" translateX="-200.0">
          <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="200.0" styleClass="pane-user">
             <ImageView fitHeight="101.0" fitWidth="103.0" layoutX="48.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" styleClass="pane-user-pic">
@@ -111,21 +111,13 @@
                </ImageView>
             </graphic>
          </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#staffAction" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons" text="Empleados">
+         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stockAction" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons" text="Movimientos">
             <graphic>
                <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/employee.png" />
+                  <Image url="@../images/stock.png" />
                </ImageView>
             </graphic>
          </Button>
-         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#reportAction" prefHeight="40.0" prefWidth="200.0" styleClass="menu-buttons" text="Reportes">
-            <graphic>
-               <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                  <Image url="@../images/invoice.png" />
-               </ImageView>
-            </graphic>
-         </Button>
-
       </VBox>
    </StackPane>
 </VBox>

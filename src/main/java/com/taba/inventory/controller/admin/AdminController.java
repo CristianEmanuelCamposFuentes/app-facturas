@@ -153,6 +153,27 @@ public class AdminController implements Initializable {
     }
 
     @FXML
+    public void purchaseAction(ActionEvent actionEvent) throws Exception {
+        windows("/fxml/Purchase.fxml", "Purchase", actionEvent);
+    }
+
+    @FXML
+    public void salesAction(ActionEvent actionEvent) throws Exception {
+        windows("/fxml/Sales.fxml", "Sales", actionEvent);
+    }
+
+    @FXML
+    public void stockAction(ActionEvent actionEvent) throws Exception {
+        windows("/fxml/Stock.fxml", "Stock", actionEvent);
+    }
+
+    @FXML
+    public void supplierAction(ActionEvent actionEvent) throws Exception {
+        windows("/fxml/Supplier.fxml", "Supplier", actionEvent);
+    }
+
+
+    @FXML
     public void logoutAction(ActionEvent event) throws Exception {
         ((Node) (event.getSource())).getScene().getWindow().hide();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Login.fxml")));
@@ -185,4 +206,5 @@ public class AdminController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
 }
